@@ -4,12 +4,12 @@ from datetime import datetime
 class User(db.Model):
     __tablename__ = "users"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(150), nullable=False)
     username = db.Column(db.String(100), nullable=True)
     password_hash = db.Column(db.String(255), nullable=True)
     google_id = db.Column(db.String(255), nullable=True)
-    role_mapping_id = db.Column(db.BigInteger, db.ForeignKey("role_mapping.id"), nullable=False)
+    role_mapping_id = db.Column(db.Integer, db.ForeignKey("role_mapping.id"), nullable=False)
     is_active = db.Column(db.Boolean, default=True, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=True)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=True)

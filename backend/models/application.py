@@ -4,9 +4,9 @@ from datetime import datetime
 class Application(db.Model):
     __tablename__ = "applications"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
-    profile_id = db.Column(db.BigInteger, db.ForeignKey("profiles.id"), nullable=False)
-    schedule_id = db.Column(db.BigInteger, db.ForeignKey("internship_schedules.id"), nullable=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    profile_id = db.Column(db.Integer, db.ForeignKey("profiles.id"), nullable=False)
+    schedule_id = db.Column(db.Integer, db.ForeignKey("internship_schedules.id"), nullable=True)
     application_number = db.Column(db.String(50), nullable=True)
     referred_by = db.Column(db.String(150), nullable=True)
     # Referral source (Planned Enum enhancement: "Within IIT", "Outside IIT")

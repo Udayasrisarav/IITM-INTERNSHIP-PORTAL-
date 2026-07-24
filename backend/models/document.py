@@ -4,8 +4,8 @@ from datetime import datetime
 class Document(db.Model):
     __tablename__ = "documents"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
-    application_id = db.Column(db.BigInteger, db.ForeignKey("applications.id"), nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    application_id = db.Column(db.Integer, db.ForeignKey("applications.id"), nullable=False)
     document_type = db.Column(db.String(100), nullable=True)
     file_name = db.Column(db.String(255), nullable=True)
     file_path = db.Column(db.String(500), nullable=True)

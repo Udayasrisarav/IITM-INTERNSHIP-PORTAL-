@@ -4,7 +4,7 @@ from datetime import datetime
 class Role(db.Model):
     __tablename__ = "roles"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     role_name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(255), nullable=True)
 
@@ -18,7 +18,7 @@ class Role(db.Model):
 class Module(db.Model):
     __tablename__ = "modules"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     module_id = db.Column(db.String(50), nullable=True)
     module_name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(255), nullable=True)
@@ -33,9 +33,9 @@ class Module(db.Model):
 class RoleMapping(db.Model):
     __tablename__ = "role_mapping"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
-    role_id = db.Column(db.BigInteger, db.ForeignKey("roles.id"), nullable=False)
-    module_id = db.Column(db.BigInteger, db.ForeignKey("modules.id"), nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    role_id = db.Column(db.Integer, db.ForeignKey("roles.id"), nullable=False)
+    module_id = db.Column(db.Integer, db.ForeignKey("modules.id"), nullable=False)
     can_read = db.Column(db.Boolean, default=False, nullable=True)
     can_update = db.Column(db.Boolean, default=False, nullable=True)
     can_delete = db.Column(db.Boolean, default=False, nullable=True)

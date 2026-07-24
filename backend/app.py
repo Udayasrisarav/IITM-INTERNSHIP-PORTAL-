@@ -24,7 +24,9 @@ def create_app(config_class=Config):
     # Register blueprints
     app.register_blueprint(health_bp)
     from routes.auth import auth_bp
+    from routes.profile import profile_bp
     app.register_blueprint(auth_bp)
+    app.register_blueprint(profile_bp)
 
     @app.route("/")
     def index():

@@ -4,8 +4,8 @@ from datetime import datetime
 class BankDetails(db.Model):
     __tablename__ = "bank_details"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
-    application_id = db.Column(db.BigInteger, db.ForeignKey("applications.id"), nullable=False, unique=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    application_id = db.Column(db.Integer, db.ForeignKey("applications.id"), nullable=False, unique=True)
     account_holder_name = db.Column(db.String(150), nullable=True)
     bank_name = db.Column(db.String(150), nullable=True)
     branch_name = db.Column(db.String(150), nullable=True)

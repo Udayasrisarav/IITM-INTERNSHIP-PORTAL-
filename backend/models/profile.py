@@ -4,8 +4,8 @@ from datetime import datetime
 class Profile(db.Model):
     __tablename__ = "profiles"
 
-    id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.BigInteger, db.ForeignKey("users.id"), nullable=False, unique=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False, unique=True)
     full_name = db.Column(db.String(150), nullable=False)
     mobile_number = db.Column(db.String(20), nullable=True)
     gender = db.Column(db.String(20), nullable=True)
