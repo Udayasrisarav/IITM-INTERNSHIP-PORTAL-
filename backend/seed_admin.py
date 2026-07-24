@@ -8,9 +8,9 @@ def seed_admin():
         print("Seeding SuperAdmin User...")
         
         # Ensure SuperAdmin role and USERS module mapping exist
-        superadmin_role = Role.query.filter_by(role_name="SuperAdmin").first()
+        superadmin_role = Role.query.filter_by(role_name="Superadmin").first()
         if not superadmin_role:
-            superadmin_role = Role(role_name="SuperAdmin", description="System administrator role")
+            superadmin_role = Role(role_name="Superadmin", description="System administrator role")
             db.session.add(superadmin_role)
             db.session.flush()
 

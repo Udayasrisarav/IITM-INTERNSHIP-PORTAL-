@@ -3,10 +3,22 @@ from database import db
 from models import Role
 
 ROLES_DATA = [
-    {"name": "Applicant", "description": "Internship applicant role"},
-    {"name": "Supervisor", "description": "Faculty supervisor reviewer role"},
-    {"name": "Chairman", "description": "Department chairman final approval role"},
-    {"name": "SuperAdmin", "description": "System administrator full control role"},
+    {
+        "name": "Applicant",
+        "description": "Internship applicant role"
+    },
+    {
+        "name": "Supervisor",
+        "description": "Faculty supervisor reviewer role"
+    },
+    {
+        "name": "Chairman",
+        "description": "Department chairman final approval role"
+    },
+    {
+        "name": "SuperAdmin",
+        "description": "System administrator role"
+    }
 ]
 
 def seed_roles():
