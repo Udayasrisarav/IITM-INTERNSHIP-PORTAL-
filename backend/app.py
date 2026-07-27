@@ -2,12 +2,15 @@ import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+
 from config import Config
 from database import init_db
 from routes import health_bp
 
+
 def create_app(config_class=Config):
     """Flask Application Factory."""
+
     app = Flask(__name__)
     app.config.from_object(config_class)
 
@@ -23,25 +26,46 @@ def create_app(config_class=Config):
 
     # Register blueprints
     app.register_blueprint(health_bp)
+
+    # Auth Module
     from routes.auth import auth_bp
+
+    # Profile Module
     from routes.profile import profile_bp
+
+    # Application Module
+    from routes.application_routes import application_bp
+
     app.register_blueprint(auth_bp)
     app.register_blueprint(profile_bp)
+    app.register_blueprint(application_bp)
 
     @app.route("/")
     def index():
-        return jsonify({
-            "message": "Welcome to Internship Management Portal API Foundation",
-            "health_check": "/health",
-            "api_health_check": "/api/v1/health"
-        }), 200
+        return jsonify(
+            {
+                "message": "Welcome to Internship Management Portal API Foundation",
+                "health_check": "/health",
+                "api_health_check": "/api/v1/health",
+            }
+        ), 200
 
     return app
+
 
 app = create_app()
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     debug = os.getenv("DEBUG", "True").lower() in ["true", "1", "t"]
-    print(f"Starting Internship Management Portal Backend Server on port {port}...")
-    app.run(host="0.0.0.0", port=port, debug=debug, use_reloader=False)
+
+    print(
+        f"Starting Internship Management Portal Backend Server on port {port}..."
+    )
+
+    app.run(
+        host="0.0.0.0",
+        port=port,
+        debug=debug,
+        use_reloader=False,
+    )
